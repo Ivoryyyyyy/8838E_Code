@@ -2,6 +2,7 @@
 #include "api.h"
 #include "pid.h"
 #include "robot.h"
+#include "auton.h"
 using namespace pros;
 void autons1 () {
 driveStraight(1600);
