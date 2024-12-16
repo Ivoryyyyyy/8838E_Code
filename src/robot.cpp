@@ -16,6 +16,7 @@
 #define Redirect_PORT 3
 #define OPTICAL_PORT 20
 #define DISTANCE_PORT 6
+#define ROTATION_PORT 2//random port
 //hello
 
 pros::Motor LF (LF_PORT, pros::E_MOTOR_GEARSET_06, true);
@@ -31,8 +32,10 @@ pros::Motor Redirect (Redirect_PORT, pros::E_MOTOR_GEARSET_18, true);
 
 pros::Imu imu(IMU_PORT);
 pros::Optical eyes(OPTICAL_PORT);
+pros::Rotation fishy(ROTATION_PORT);
 pros::Distance dis (DISTANCE_PORT);
 pros::Controller con (pros::E_CONTROLLER_MASTER);
+
 
 pros::ADIDigitalOut MogoMech ('A',false);
 pros::ADIDigitalOut StakeWing('B',false);
