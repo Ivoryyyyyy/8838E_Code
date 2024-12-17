@@ -17,7 +17,6 @@
 #define OPTICAL_PORT 20
 #define DISTANCE_PORT 6
 #define ROTATION_PORT 2//random port
-//hello
 
 pros::Motor LF (LF_PORT, pros::E_MOTOR_GEARSET_06, true);
 pros::Motor LM (LM_PORT, pros::E_MOTOR_GEARSET_06, false);
@@ -39,4 +38,4 @@ pros::Controller con (pros::E_CONTROLLER_MASTER);
 
 pros::ADIDigitalOut MogoMech ('A',false);
 pros::ADIDigitalOut StakeWing('B',false);
-pros::ADIDigitalIn selec ('C');
+pros::ADIDigitalIn selec ('C');//bla
