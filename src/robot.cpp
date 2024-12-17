@@ -18,7 +18,7 @@
 #define DISTANCE_PORT 6
 //hello
 
-pros::Motor LF(LF_PORT, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor LF (LF_PORT, pros::E_MOTOR_GEARSET_06, true); 
 // pros::Motor LF (LF_PORT, pros::E_MOTOR_GEARSET_06, true);
 // pros::Motor LM (LM_PORT, pros::E_MOTOR_GEARSET_06, false);
 // pros::Motor LB (LB_PORT, pros::E_MOTOR_GEARSET_06, true);
