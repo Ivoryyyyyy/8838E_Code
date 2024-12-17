@@ -17,7 +17,8 @@ void on_center_button() {
 	} else {
 		pros::lcd::clear_line(2);
 	}
-}
+}//bla bla bla
+//bla bla bla
 
 void initialize() {
 	pros::lcd::initialize();
