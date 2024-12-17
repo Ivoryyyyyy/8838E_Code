@@ -43,6 +43,7 @@ double liftAngle=true;
 int time=0;
 bool hooks_Macro = false;
 bool  hooks_Macro_Rev = false;
+bool fishy_macro = false;
 
 
 while (true) {
@@ -65,6 +66,11 @@ ColorSenseIntake(127, true);
 
 }
 
+//macro fishy
+if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_UP)){
+	fishy_macro=!fishy_macro;
+}
+
 //Mogo Mech
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_X)){
 	MogoMechToggle = !MogoMechToggle;
@@ -80,16 +86,27 @@ if (con.get_digital_new_press(E_CONTROLLER_DIGITAL_Y)) {
  //Redirect
 if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 	Redirect.move(90);
-	// liftAngle = Redirect.get_position();	
+	fishy_macro=false;
+	fishy.set_position(fishy.get_angle());
+	liftAngle = fishy.get_position();	
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 	Redirect.move(-70);
-	// liftAngle = Redirect.get_position();
+	fishy_macro=false; 
+	fishy.set_position(fishy.get_angle());
+	liftAngle = fishy.get_position();
+} 
+else if (fishy_macro){
+setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
+Redirect.move(calPID(37000,fishy.get_position(),0,0));
+if(abs(fishy.get_position()-37000)<200){
+	fishy_macro=false;
+}
 }
 else {
-	// setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
+	setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
 	Redirect.move(0);
-	// Redirect.move(calPID(liftAngle,Redirect.get_position(),0,0));
+	//Redirect.move(calPID(liftAngle,fishy.get_position(),0,0));
 }
  //yapp 
 //pid tester

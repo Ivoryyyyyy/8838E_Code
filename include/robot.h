@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-
+//hi
 //header Guards, safety
 #ifndef ROBOTH
 #define ROBOTH
@@ -19,6 +19,7 @@ extern pros::Motor Redirect;
 
 extern pros::Imu imu;
 extern pros::Optical eyes; 
+extern pros::Rotation fishy;
 extern pros::Distance dis;
 extern pros::Controller con;
 
