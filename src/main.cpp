@@ -50,8 +50,6 @@ bool fishy_macro = false;
 while (true) {
 
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-
-ColorSenseIntake(127, true);
 // hooks_Macro = true;
 
 // while (hooks_Macro){
@@ -84,7 +82,7 @@ if (con.get_digital_new_press(E_CONTROLLER_DIGITAL_Y)) {
  }
  StakeWing.set_value(StakeWingToggle);
 
- //Redirect
+ //fish mech 
 if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 	Redirect.move(90);
 	fishy_macro=false;
@@ -105,13 +103,17 @@ if(abs(fishy.get_position()-37000)<200){
 }
 }
 else {
-	setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
-	Redirect.move(0);
+	// setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
+	// Redirect.move(0);
 	//Redirect.move(calPID(liftAngle,fishy.get_position(),0,0));
+	if(fishy.get_angle() < 200){
+		Redirect.move(calPID(0, fishy.get_position(), 0, 0));
+	} else {
+		Redirect.move(0);
+	}
 }
- //yapp 
-//pid tester
-// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+//pid tester m 
+// if(con.get_digital_new_press(E_CONTROLLER_DIGI TAL_A)){
 // 	StakeWingToggle = !StakeWingToggle;
 // 	Redirect.move(90);
 // 	StakeWingToggle = !StakeWingToggle;

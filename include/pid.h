@@ -27,7 +27,8 @@ extern void driveArcR(double theta, double radius, int timeout);
 extern void driveArcLF(double theta, double radius, int timeout);
 extern void driveArcL(double theta, double radius, int timeout);
 extern void driveArcRF(double theta, double radius, int timeout);
-extern void  ColorSenseIntake(int speed, bool color_sort = false);
+extern void  ColorSenseIntakeRed(int speed);
+extern void ColorSenseIntakeBlue(int speed);
 
 
 
@@ -51,16 +52,16 @@ extern int viewTime;
 #define LIFT_KD 0// 
 
 //arc stuff
-#define HEADING_KP 6
+#define HEADING_KP 150
 #define HEADING_KI 0
 #define HEADING_KD 0
 #define HEADING_MAX_INTEGRAL 0
 #define HEADING_INTEGRAL_KI 0
 
 //arc turn stuff
-#define ARC_HEADING_KP 40 //make it bigger untill u can see it correcting along the path
+#define ARC_HEADING_KP 1 //make it bigger untill u can see it correcting along the path // 40
 #define ARC_HEADING_KI 0.00
-#define ARC_HEADING_KD 18 // makt it bigger untill it is smooth
+#define ARC_HEADING_KD 0 // make it bigger untill it is smooth //18
 #define ARC_HEADING_MAX_INTEGRAL 0
 #define ARC_HEADING_INTEGRAL_KI 0 // to- do list, tune 
 

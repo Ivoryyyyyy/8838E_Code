@@ -939,28 +939,29 @@ if((leftcorrect < 0) && (position > 0)){
             position = imu.get_heading();
         }
     } else if((leftcorrect > 0) && (position < 0)){
-        if ((leftcorrect - position) && (position < 0)){
+        if ((leftcorrect - position) >= 180){
             position = imu.get_heading();
         }
      }
     setConstants(ARC_HEADING_KP, ARC_HEADING_KI, ARC_HEADING_KD);
     int fix = calPID3((init_heading + leftcorrect), position, ARC_HEADING_INTEGRAL_KI, ARC_HEADING_MAX_INTEGRAL);
     totalError += (abs(error3));   
-    if (abs(ltarget - encoderAvgL) <= 25) fix = 0;   
+
+   // fix = 0;
+
+    //if (abs(ltarget - encoderAvgL) <= 25) fix = 0;   
         chasMove( (voltageL + fix), (voltageL + fix), (voltageL + fix), (voltageR - fix), (voltageR - fix), (voltageR - fix));
         if ((abs(ltarget - encoderAvgL) <= 10) && (abs(rtarget - encoderAvgR) <= 10)) count++;
         if (count >= 20 || time > timeout){
-            break;
+           // break;
         }
 
      if(time % 50 == 0 && time % 100 != 0 && time % 150!= 0){
-            con.print(0,0, "ERROR: %f           ", float(time));
-        }
-         if(time % 50 == 0 && time % 100 != 0){
-            con.print(2,0, "Voltage: %f           ",float(voltageL));
-        }
-         if(time % 50 == 0){
-            con.print(1,0, "leftcorrect: %f           ", float(leftcorrect));
+            con.print(0,0, "imu: %f           ", float((init_heading + leftcorrect)));
+        } else if(time % 100 == 0 && time % 150 != 0){
+            con.print(1,0, "fix: %f           ",float(fix));
+        } else if(time % 150 == 0){
+            con.print(2,0, "leftcorrect: %f           ", float(leftcorrect));
         }
         
 
@@ -1233,40 +1234,104 @@ int fix = calPID3((init_heading + rightcorrect), position, ARC_HEADING_INTEGRAL_
     }   
 } 
 
-void ColorSenseIntake(int speed, bool color_sort){
-   // defualts to sort out blue 
-    // color_sort = true;
-    //    string blueSort;
-    //  string redSort;
+void ColorSenseIntakeRed(int speed){
 int speed2 = 0; 
-
+ bool color_sort = true;
    if(speed > 127){
-    speed = 127;
-   }
-    while(color_sort = true){ // use for red sort 
+        speed = 127;
+    }
+    while(color_sort){ // use for red sort 
      Intake.move(speed);
      Intake_Layer1.move(speed);
-     if (eyes.get_hue() < 40){
-       delay(250);
-       speed = 0;
+     if (eyes.get_hue() < 45){
+       delay(235);
         Intake.move(speed2);
         Intake_Layer1.move(speed2);
-        delay(200);
+        delay(400);
         Intake.move(speed);
         Intake_Layer1.move(speed);
-        break;
      }
+
    }
-    while(color_sort = false){ // use for blue sort 
-     Intake.move(speed);
-     Intake_Layer1.move(speed);
-     if (eyes.get_hue() > 120){
-       // delay(500);
-        Intake.move(0);
-        Intake_Layer1.move(0);
-        break;
-     }
-   } 
+} 
+void ColorSenseIntakeBlue(int speed){
+    int speed2 = 0; 
+    bool color_sort = true;
+    if(speed > 127){
+        speed = 127;
+    }
+    
+    while(color_sort){ // use for blue sort 
+        Intake.move(speed);
+        Intake_Layer1.move(speed);
+        if (eyes.get_hue() > 80){
+            delay(228);
+            Intake.move(speed2);
+            Intake_Layer1.move(speed2);
+            delay(400);
+            Intake.move(speed);
+            Intake_Layer1.move(speed);
+        }
+        time2 += 10;
+        delay(10);
+   }
 
 }
 
+void RingHold(int speed, bool color){ // test with bot. analytics ran through, but isn't tested. 
+    int speed2 = 0;
+
+    Intake.move(speed);
+    Intake_Layer1.move(speed);
+
+     if(speed > 127){
+        speed = 127;
+    }
+
+    if((eyes.get_hue() < 45) && (color = false)){
+        delay(210);
+        Intake.move(speed2);
+        Intake_Layer1.move(speed2);
+    }
+
+ if((eyes.get_hue() > 150) && (color = false)){
+        delay(210);
+        Intake.move(speed2);
+        Intake_Layer1.move(speed2);
+    }
+}
+
+
+void WallStakePos(int speed, int SlowSense){
+    int speed2 = 0;
+    int x = abs(speed);//might be SlowSense. Ask Henry //put abs of something in here to make t eh code predict timeout.
+ if (speed > 127){
+        speed = 127;
+    }
+
+    //slow sense calc =>
+    if(SlowSense > 10){
+        SlowSense = 10;
+    }
+    if(SlowSense < 1){
+        SlowSense = 1;
+    }
+
+    int ActualSlow = (SlowSense/10); 
+
+    //timeout prediction math
+    int timeout = (-0.000226134 * pow(x,5)) + (0.0565406 * pow(x,4)) + (-4.63751 * pow(x,3)) + (157.75808* pow(x,2)) + (-2337.44882 * x) + 14364;
+   
+    Intake.move(speed);
+    Intake_Layer1.move(speed);
+
+     if((eyes.get_hue() > 150) || (eyes.get_hue()<45)){
+        delay(150);
+        Intake.move(speed * ActualSlow);
+        Intake.move(speed * ActualSlow);
+        delay(timeout);
+        Intake.move(speed2);
+        Intake_Layer1.move(speed2);
+    }
+
+}
