@@ -27,7 +27,7 @@ void initialize() {
 void disabled() {}
 
 void autonomous() {
-	autons1();
+	autons3();
 }
 void competition_initialize() {}
 
@@ -48,8 +48,6 @@ bool fishy_macro = false;
 while (true) {
 
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-
-ColorSenseIntake(127, true);
 // hooks_Macro = true;
 
 // while (hooks_Macro){
@@ -82,18 +80,20 @@ if (con.get_digital_new_press(E_CONTROLLER_DIGITAL_Y)) {
  }
  StakeWing.set_value(StakeWingToggle);
 
- //Redirect
+ //fish mech 
 if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 	Redirect.move(90);
 	fishy_macro=false;
 	fishy.set_position(fishy.get_angle());
-	liftAngle = fishy.get_position();	
+	liftAngle = fishy.get_position();
+	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);	
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 	Redirect.move(-70);
 	fishy_macro=false; 
 	fishy.set_position(fishy.get_angle());
 	liftAngle = fishy.get_position();
+	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
 } 
 else if (fishy_macro){
 setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
@@ -103,13 +103,18 @@ if(abs(fishy.get_position()-37000)<200){
 }
 }
 else {
-	setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
-	Redirect.move(0);
+	// setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
+	// Redirect.move(0);
 	//Redirect.move(calPID(liftAngle,fishy.get_position(),0,0));
+	if(fishy.get_angle() < 200){
+		Redirect.move(calPID(0, fishy.get_position(), 0, 0));
+	} else {
+		Redirect.move(0);
+		Redirect.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	}
 }
- //yapp 
-//pid tester
-// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+//pid tester m 
+// if(con.get_digital_new_press(E_CONTROLLER_DIGI TAL_A)){
 // 	StakeWingToggle = !StakeWingToggle;
 // 	Redirect.move(90);
 // 	StakeWingToggle = !StakeWingToggle;
@@ -133,14 +138,14 @@ else {
 
 //Intake
 if (con.get_digital(E_CONTROLLER_DIGITAL_R1)){
-	Intake.move(-127);
-	Intake_Layer1.move(-127);
+	Intake.move(95);
+	Intake_Layer1.move(127);
 	Intake.tare_position();
 	hooks_Macro = false; 
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_R2)){
-	Intake.move (127);
-	Intake_Layer1.move(127);
+	Intake.move (-95);
+	Intake_Layer1.move(-127);
 	Intake.tare_position(); 
 	hooks_Macro = false; 
 }
