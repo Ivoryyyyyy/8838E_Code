@@ -151,7 +151,7 @@ void driveStraight (int target) {
 
 double x = 0;
 x = double(abs(target));
-//timeout = (0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
+timeout = (0.000000000000878623 * pow(x,5)) + ( -0.00000000469757 * pow(x, 4)) + (0.0000084887 * pow(x,3)) + (-0.00650644 * pow(x,2)) + (2.86105 * x) + 222.65543; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
 
     double voltage;
     double encoderAvg;
@@ -287,8 +287,7 @@ void driveStraight2 (int target) {
 
 double x = 0;
 x = double(abs(target));
-//timeout = 30;//(0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
-
+timeout = (0.000000000000878623 * pow(x,5)) + ( -0.00000000469757 * pow(x, 4)) + (0.0000084887 * pow(x,3)) + (-0.00650644 * pow(x,2)) + (2.86105 * x) + 222.65543;
     double voltage;
     double encoderAvg;
     int count = 0;
@@ -361,7 +360,7 @@ double x = 0;
 x = double(abs(target));
 variKP = (0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; 
 variKD = (0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; 
-//timeout = 30;//(0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
+//timeout = 30; //(0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
 
 imu.tare_heading();
 
@@ -540,7 +539,7 @@ if (voltage > 127){
     voltage = -127;
 }
  
-if(int clampDistance = encoderAvg){
+if(int clampDistance = (target - encoderAvg)){
     MogoMech.set_value(true);
 }
 chasMove( (voltage + heading_error), (voltage + heading_error), (voltage + heading_error),(voltage - heading_error), (voltage - heading_error), (voltage - heading_error));
@@ -1256,48 +1255,46 @@ int speed2 = 0;
 } 
 void ColorSenseIntakeBlue(int speed){
     int speed2 = 0; 
-    bool color_sort = true;
-    if(speed > 127){
+    bool color_sort;
+
+Intake.move(speed);
+Intake_Layer1.move(speed);
+
+  if(speed > 127){
         speed = 127;
     }
-    
-    while(color_sort){ // use for blue sort 
-        Intake.move(speed);
-        Intake_Layer1.move(speed);
-        if (eyes.get_hue() > 80){
-            delay(228);
-            Intake.move(speed2);
-            Intake_Layer1.move(speed2);
-            delay(400);
-            Intake.move(speed);
-            Intake_Layer1.move(speed);
-        }
-        time2 += 10;
-        delay(10);
+
+     if (eyes.get_hue() < 140){
+color_sort = true;
+     }
+
+if(color_sort = true){
+delay(228);
+Intake.move(speed2);
+Intake_Layer1.move(speed2);
+delay(50);
+Intake.move(speed);
+Intake_Layer1.move(speed);
+}
    }
 
-}
 
-void RingHold(int speed, bool color){ // test with bot. analytics ran through, but isn't tested. 
+void RingHold(int speed){ // test with bot. analytics ran through, but isn't tested. 
     int speed2 = 0;
-
-    Intake.move(speed);
-    Intake_Layer1.move(speed);
+    bool color = true;
 
      if(speed > 127){
         speed = 127;
     }
 
-    if((eyes.get_hue() < 45) && (color = false)){
-        delay(210);
+    Intake.move(speed);
+    Intake_Layer1.move(speed);
+    while ((color = true)){
+      if(eyes.get_hue() < 45){
         Intake.move(speed2);
         Intake_Layer1.move(speed2);
-    }
-
- if((eyes.get_hue() > 150) && (color = false)){
-        delay(210);
-        Intake.move(speed2);
-        Intake_Layer1.move(speed2);
+        break;
+    }  
     }
 }
 
@@ -1327,9 +1324,9 @@ void WallStakePos(int speed, int SlowSense){
 
      if((eyes.get_hue() > 150) || (eyes.get_hue()<45)){
         delay(150);
-        Intake.move(speed * ActualSlow);
-        Intake.move(speed * ActualSlow);
-        delay(timeout);
+        // Intake.move(speed * ActualSlow);
+        // Intake.move(speed * ActualSlow);
+        // delay(timeout);
         Intake.move(speed2);
         Intake_Layer1.move(speed2);
     }

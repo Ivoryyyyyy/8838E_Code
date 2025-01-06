@@ -5,8 +5,8 @@
 #ifndef PIDH
 #define PIDH
 
-#define STRAIT_KP 2.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
-#define STRAIT_KI 0.001// 0.001(breaks out of the loop)
+#define STRAIT_KP 5.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
+#define STRAIT_KI 1// 0.001(breaks out of the loop)
 #define STRAIT_KD 7// start at what kp is at then make it bigger
 
 #define STRAIT_INTEGRAL_KI 40//
@@ -27,9 +27,10 @@ extern void driveArcR(double theta, double radius, int timeout);
 extern void driveArcLF(double theta, double radius, int timeout);
 extern void driveArcL(double theta, double radius, int timeout);
 extern void driveArcRF(double theta, double radius, int timeout);
-extern void  ColorSenseIntakeRed(int speed);
+extern void ColorSenseIntakeRed(int speed);
 extern void ColorSenseIntakeBlue(int speed);
-
+extern void WallStakePos(int speed, int SlowSense);
+extern void RingHold(int speed);
 
 
 extern int time2;
@@ -42,7 +43,7 @@ extern int viewTime;
 
 #define TURN_KP 7.00//
 #define TURN_KI 0// 
-#define TURN_KD 70// 
+#define TURN_KD 75// 
 
 #define TURN_INTRGRAL_KI 30
 #define TURN_MAX_INTEGRAL 25

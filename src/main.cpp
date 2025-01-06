@@ -29,7 +29,7 @@ void initialize() {
 void disabled() {}
 
 void autonomous() {
-	autons1();
+	autons3();
 }
 void competition_initialize() {}
 
@@ -87,13 +87,15 @@ if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 	Redirect.move(90);
 	fishy_macro=false;
 	fishy.set_position(fishy.get_angle());
-	liftAngle = fishy.get_position();	
+	liftAngle = fishy.get_position();
+	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);	
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 	Redirect.move(-70);
 	fishy_macro=false; 
 	fishy.set_position(fishy.get_angle());
 	liftAngle = fishy.get_position();
+	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
 } 
 else if (fishy_macro){
 setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
@@ -110,6 +112,7 @@ else {
 		Redirect.move(calPID(0, fishy.get_position(), 0, 0));
 	} else {
 		Redirect.move(0);
+		Redirect.set_brake_mode(MOTOR_BRAKE_BRAKE);
 	}
 }
 //pid tester m 
@@ -137,14 +140,14 @@ else {
 
 //Intake
 if (con.get_digital(E_CONTROLLER_DIGITAL_R1)){
-	Intake.move(-127);
-	Intake_Layer1.move(-127);
+	Intake.move(95);
+	Intake_Layer1.move(127);
 	Intake.tare_position();
 	hooks_Macro = false; 
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_R2)){
-	Intake.move (127);
-	Intake_Layer1.move(127);
+	Intake.move (-95);
+	Intake_Layer1.move(-127);
 	Intake.tare_position(); 
 	hooks_Macro = false; 
 }
