@@ -1065,7 +1065,11 @@ bool over = false;
 resetEncoders();
 ltargetF = double(( theta/360) *2 * pi * radius);
 rtargetF = double((theta / 360) * 2 * pi *(radius + 750 ));
+if(theta > 0){
 theta = theta + 45;
+} else {
+    theta = theta - 45;
+}
 ltarget = double(( theta/360) *2 * pi * radius);
 rtarget = double((theta / 360) * 2 * pi *(radius + 750 ));
 while(true){
@@ -1083,13 +1087,13 @@ double encoderAvgL = LF.get_position();
 double encoderAvgR = RB.get_position();
 double leftcorrect = -(encoderAvgL * 360) / (2 * pi * radius);
 
-if((leftcorrect < 0) && (position > 0)){
-        if((position - leftcorrect ) >= 180){
-            leftcorrect = leftcorrect + 360;
+if(((init_heading + leftcorrect) < 0) && (position > 0)){
+        if((position - (init_heading + leftcorrect) ) >= 180){
+            init_heading = init_heading + 360;
             position = imu.get_heading();
         }
-    } else if((leftcorrect > 0) && (position < 0)){
-        if ((leftcorrect - position) && (position < 0)){
+    } else if(((init_heading + leftcorrect) > 0) && (position < 0)){
+        if (((init_heading + leftcorrect) - position) >= 180){
             position = imu.get_heading();
         }
      }
@@ -1152,6 +1156,7 @@ double ltargetF = 0;
 double rtargetF = 0;
 double ltarget = 0;
 double rtarget = 0;
+double rightcorrect = 0;
 double pi =  3.14159265359;
 double init_heading = imu.get_heading();
 if(init_heading > 180){
@@ -1162,7 +1167,11 @@ int time2 = 0;
 resetEncoders();
 rtargetF = double((theta/360) *2 * pi * radius);
 ltargetF= double((theta / 360) * 2 * pi *(radius + 750)); 
+if(theta > 0){
 theta = theta + 45;
+} else {
+    theta = theta - 45;
+}
 rtarget = double((theta/360) *2 * pi * radius);
 ltarget = double((theta / 360) * 2 * pi *(radius + 750)); 
 
@@ -1177,13 +1186,13 @@ if(position > 180){
     position = position - 360;
 }
 
-if((init_heading < 0) && (position > 0)){
-        if((position - init_heading ) >= 180){
+if(((init_heading + rightcorrect) < 0) && (position > 0)){
+        if((position - (init_heading + rightcorrect) ) >= 180){
             init_heading = init_heading + 360;
             position = imu.get_heading();
         }
-    } else if((init_heading > 0) && (position < 0)){
-        if ((init_heading - position) && (position < 0)){
+    } else if(((init_heading + rightcorrect) > 0) && (position < 0)){
+        if (((init_heading + rightcorrect) - position) >= 180){
             position = imu.get_heading();
         }
      }
@@ -1203,12 +1212,12 @@ if((init_heading < 0) && (position > 0)){
     }else if(voltageR < -127){
         voltageR = -127;
     }
-    double rightcorrect = (encoderAVGR * 360) / (2 * pi * radius);
+    rightcorrect = (encoderAVGR * 360) / (2 * pi * radius);
         setConstants(ARC_HEADING_KP, ARC_HEADING_KI, ARC_HEADING_KD);
 int fix = calPID3((init_heading + rightcorrect), position, ARC_HEADING_INTEGRAL_KI, ARC_HEADING_MAX_INTEGRAL);
  if (abs(rtarget - encoderAVGR) <= 25) fix = 0;  
 
-    chasMove( (voltageL - fix), (voltageL - fix ), (voltageL - fix), (voltageR + fix), (voltageR + fix), (voltageR + fix));
+    chasMove( (voltageL + fix), (voltageL + fix ), (voltageL + fix), (voltageR - fix), (voltageR - fix), (voltageR - fix));
    if (theta > 0){
     if ((encoderAVGR - (rtargetF)) > 0){
         over = true;

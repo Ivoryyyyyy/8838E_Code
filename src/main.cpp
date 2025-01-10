@@ -4,7 +4,7 @@
 #include "pid.h"
 #include "robot.h"
 #include "auton.h"
-
+bool stay_clamp = true;
 
 using namespace pros;
 using namespace std;
@@ -25,18 +25,23 @@ void initialize() {
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+
 }
-void disabled() {}
+void disabled() { 
+	// while(stay_clamp = true){
+	// 	MogoMech.set_value(true);
+	// }
+}
 
 void autonomous() {
-	autons3();
+	arc();
 }
 void competition_initialize() {}
 
 
 void opcontrol() {
 
-bool MogoMechToggle = false;
+
 bool arcToggle = true;
 bool tankToggle=false;
 bool StakeWingToggle=false;
@@ -74,7 +79,7 @@ if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_UP)){
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_X)){
 	MogoMechToggle = !MogoMechToggle;
 }
-MogoMech.set_value(MogoMechToggle);
+MogoMech.set_value(MogoMechToggle); 
 
 //Stakewing toggle
 if (con.get_digital_new_press(E_CONTROLLER_DIGITAL_Y)) {
@@ -140,13 +145,13 @@ else {
 
 //Intake
 if (con.get_digital(E_CONTROLLER_DIGITAL_R1)){
-	Intake.move(95);
+	Intake.move(90);
 	Intake_Layer1.move(127);
 	Intake.tare_position();
 	hooks_Macro = false; 
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_R2)){
-	Intake.move (-95);
+	Intake.move (-90);
 	Intake_Layer1.move(-127);
 	Intake.tare_position(); 
 	hooks_Macro = false; 

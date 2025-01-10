@@ -4,7 +4,13 @@
 #include "robot.h"
 #include "auton.h"
 using namespace pros;
+
+bool MogoMechToggle = false;
+
 void autons1 () {
+
+    bool MogoMechToggle = true;
+    MogoMech.set_value(true);
 // driveStraight(1600);
 // driveTurn(15);
 // delay(50);
@@ -82,36 +88,29 @@ Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(10.5);
 // driveTurn(-10);
-driveClampSlow(-1780, 40, 45);
+driveClampSlow(-1780, 40, 50);
 driveStraight2(100);
 Redirect.move(127);
 delay(200);
 Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(150);
-driveTurn(15);
+driveTurn(14);
 Intake.move(-80);
 Intake_Layer1.move(-127);
 driveStraight2(750); // first ring 
-driveTurn(-25);
+driveTurn(-26);
 driveSlow(350, 20);
 delay(50); //second ring
 driveTurn(-100);
-driveSlow(600, 40);
- bool color = true;
-   // while(color){
-// if(eyes.get_hue()<140){
-//     Intake.move(0);
-//     Intake_Layer1.move(0);
-//     break;
-// }
-//     }
+driveSlow(600, 50);
+Intake.move(-95);
 delay(90);
 // Intake.move(0);
 // Intake_Layer1.move(0);
 // ColorSenseIntakeRed(-80);//third ring 
-driveTurn(-100);
-driveStraight2(1300);
+driveTurn(-115);
+driveStraight2(1000);
 Redirect.move(-127);//touches ladder
 }
 
@@ -122,88 +121,95 @@ Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(35);
 driveSlow(305, 15);
 Redirect.move(-127);
-delay(600);
+delay(450);
 Redirect.move(127);
 delay(350);
 Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveStraight2(-500);
-driveTurn(70);
+driveTurn(60);
 Redirect.move(127);
 delay(200);
 Redirect.move(0);
     Intake.move(-80);
     Intake_Layer1.move(-127);
-    driveSlow(1000, 25);
+    driveSlow(700, 25);  
     bool color = true;
     while(color){
-if(eyes.get_hue()<30){
+if(eyes.get_hue()<25){
     Intake.move(0);
     Intake_Layer1.move(0);
     break;
 }
     }
-driveSlow(-750, 50);
-driveTurn(-80);
-driveClampSlow(-1550, 20, 45);
-// driveStraight2(100);
+driveSlow(-600, 70);
+driveTurn(-85);
+driveClampSlow(-1550, 20, 65);
+driveStraight2(100);
 driveTurn(-110);
-Intake.move(-80);
+Intake.move(-100);
 Intake_Layer1.move(-127);
 delay(250);
 driveStraight2(775);
 Intake.move(-85);
-driveStraight2(-1555);
-// driveStraight2(750);
-// driveTurn(160);
-// driveTurn(30);
-// driveStraight2(800);
-// Redirect.move(-127)
+driveTurn(-160);
+driveSlow(950, 100);
+Redirect.move(-127);
 }
 
 void autons3() {
-Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-Redirect.move(-17);
-delay(75);
-driveSlow(1850, 75); // speed up later 
-driveTurn(-35);
-driveSlow(155, 30);
+driveSlow(1875, 50); // speed up later 
+driveTurn(-45);
+// driveStraight2(150);
 StakeWing.set_value(true);
+delay(500);
+driveTurn(-80);
+StakeWing.set_value(false);
+Intake_Layer1.move(-127);
+driveStraight2(400);
+driveTurn(-120);
+// work in progress
+}       
+
+void arc(){
 Redirect.move(-127);
-delay(575);
+delay(600);
 Redirect.move(127);
-delay(400);
-Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-// Redirect.move(0);
-// driveTurn(-8);
-// StakeWing.set_value(false);
-// driveStraight2(-770);
-// delay(50);
-// Redirect.move(127);
-// delay(200);
-// Redirect.move(0);
-// Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-// Intake.move(-80);
-// Intake_Layer1.move(-127);
-// driveSlow(325, 100);
-//  bool color = true;
-//     while(color){
-// if(eyes.get_hue()<30){
-//     Intake.move(0);
-//     Intake_Layer1.move(0);
-//     break;
-// }
-//     }
-// Redirect.move(-10);
+delay(100);
+Redirect.move(0);
+driveStraight2(-485);
+driveTurn(89);
+driveClampSlow(-1200, 30, 50);
+driveStraight2(200);
+delay(200);
+driveTurn(91);
+Intake.move(-95);
+Intake_Layer1.move(-127);
+Redirect.move(10);
 // StakeWing.set_value(true);
-// driveStraight2(230);
-// driveTurn(-150);
-// Redirect.move(0);
-// StakeWing.set_value(false);
-// driveTurn(-23);
-// driveClampSlow(-1100, 45, 50);
-// Intake.move(-85);
-// // driveTurn(-150);
-// // // driveTurn(-30);
-// // driveStraight2(-1400);
-}                               
+driveArcRF(90, 850, 2000);
+Redirect.move(0);
+Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+driveTurn(-60);
+driveStraight2(500);
+driveArcLF(70, 500, 1500);
+driveStraight2(30);
+bool color_sort = true;
+while(color_sort){
+if(eyes.get_hue()<25){
+    delay(40);
+    Intake.move(0);
+    Intake_Layer1.move(0);
+    break;
+}
+    }
+driveTurn(-150);
+driveTurn(-20);
+driveSlow(25, 150);
+Redirect.move(-127);
+delay(600);
+Redirect.move(127);
+delay(650);
+Redirect.move(0);
+
+}

@@ -7,13 +7,13 @@
 #define LF_PORT 13
 #define LM_PORT 11
 #define LB_PORT 12
-#define RF_PORT 3
+#define RF_PORT 16
 #define RM_PORT 1
 #define RB_PORT 2
 #define IMU_PORT 14
 #define Intake_port 4
 #define Intake_Layer1_PORT 6
-#define Redirect_PORT 5
+#define Redirect_PORT 10
 #define OPTICAL_PORT 8
 #define DISTANCE_PORT 20
 #define ROTATION_PORT 7//random port

@@ -41,6 +41,8 @@ extern void hooks(int speed);
 extern void stallProt();
 extern int viewTime;
 
+
+
 #define TURN_KP 7.00//
 #define TURN_KI 0// 
 #define TURN_KD 75// 
@@ -52,17 +54,17 @@ extern int viewTime;
 #define LIFT_KI 0// 
 #define LIFT_KD 0// 
 
-//arc stuff
+//straight stuff
 #define HEADING_KP 150
-#define HEADING_KI 0
-#define HEADING_KD 0
+#define HEADING_KI 25
+#define HEADING_KD 250
 #define HEADING_MAX_INTEGRAL 0
 #define HEADING_INTEGRAL_KI 0
 
 //arc turn stuff
-#define ARC_HEADING_KP 1 //make it bigger untill u can see it correcting along the path // 40
-#define ARC_HEADING_KI 0.00
-#define ARC_HEADING_KD 0 // make it bigger untill it is smooth //18
+#define ARC_HEADING_KP 6 //make it bigger untill u can see it correcting along the path // 40
+#define ARC_HEADING_KI 0.1
+#define ARC_HEADING_KD 10 // make it bigger untill it is smooth //18
 #define ARC_HEADING_MAX_INTEGRAL 0
 #define ARC_HEADING_INTEGRAL_KI 0 // to- do list, tune 
 
