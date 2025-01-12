@@ -4,8 +4,11 @@
 #include "pid.h"
 #include "robot.h"
 #include "auton.h"
+<<<<<<< HEAD
 bool stay_clamp = true;
 
+=======
+>>>>>>> f8c7a7611c64d12fbae481e5be5d1705c191c31d
 using namespace pros;
 using namespace std;
 
