@@ -55,19 +55,7 @@ bool fishy_macro = false;
 while (true) {
 
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-// hooks_Macro = true;
-
-// while (hooks_Macro){
-// 	Intake.move(95);
-// 	Intake_Layer1.move(95);
-// 	if (dis.get() <= 300){
-// 		delay(300);
-// 		Intake.move(-90);
-// 		delay(150);
-// 		Intake.move(0);
-// 	}
-// }
-
+arc();
 }
 
 //macro fishy
