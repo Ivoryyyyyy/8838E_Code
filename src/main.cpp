@@ -4,11 +4,8 @@
 #include "pid.h"
 #include "robot.h"
 #include "auton.h"
-<<<<<<< HEAD
 bool stay_clamp = true;
 
-=======
->>>>>>> f8c7a7611c64d12fbae481e5be5d1705c191c31d
 using namespace pros;
 using namespace std;
 
@@ -31,13 +28,14 @@ void initialize() {
 
 }
 void disabled() { 
+	// imu.tare(); 
 	// while(stay_clamp = true){
 	// 	MogoMech.set_value(true);
 	// }
 }
 
 void autonomous() {
-	arc();
+	autons5();
 }
 void competition_initialize() {}
 
@@ -53,13 +51,13 @@ int time=0;
 bool hooks_Macro = false;
 bool  hooks_Macro_Rev = false;
 bool fishy_macro = false;
-
+bool return_fishmech = false;
 
 while (true) {
 
-if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-arc();
-}
+// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+// arc();
+// }
 
 //macro fishy
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_UP)){
@@ -78,35 +76,75 @@ if (con.get_digital_new_press(E_CONTROLLER_DIGITAL_Y)) {
  }
  StakeWing.set_value(StakeWingToggle);
 
- //fish mech 
+// Fish mech
+bool is_above = (fishy.get_angle() >= 9000) && (fishy.get_angle() < 27000);
 if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
-	Redirect.move(90);
-	fishy_macro=false;
-	fishy.set_position(fishy.get_angle());
+	// Rotates fishmech back to the starting position
+	bool forbidden = ((fishy.get_angle() >= 27000) && (fishy.get_angle() <= 34000));
+
+    if (forbidden == false) {
+		// Safe to move
+		int speed = 70;
+		if (!is_above && (fishy.get_angle() >= 27000)) {
+			// Close to the limit so slow down
+			speed = 20;
+		}
+    	Redirect.move(speed);
+	} else {
+		// There isn't a BRAKE mode, so just move the other way to
+		// stay in place
+		Redirect.move(0);
+	}
+
+	fishy_macro=false; 
 	liftAngle = fishy.get_position();
-	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);	
+	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
-	Redirect.move(-70);
+	// Rotates fishmech to put the ring on the stake
+	bool forbidden = (is_above && (fishy.get_angle() >= 23000));
+
+    if (forbidden == false) {
+		// Safe to move
+		int speed = -70;
+		if (is_above && (fishy.get_angle() >= 19000)) {
+			// Close to the limit so slow down
+			speed = -20;
+		}
+    	Redirect.move(speed);
+	} else {
+		// There isn't a BRAKE mode, so just move the other way to
+		// stay in place 
+		Redirect.move(10);
+	}
+
+	// Once we are above automatically return to start
+	if (is_above) {
+		return_fishmech = true;
+	}
+
 	fishy_macro=false; 
-	fishy.set_position(fishy.get_angle());
 	liftAngle = fishy.get_position();
 	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
 } 
 else if (fishy_macro){
-setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
-Redirect.move(calPID(37000,fishy.get_position(),0,0));
-if(abs(fishy.get_position()-37000)<200){
-	fishy_macro=false;
-}
+	setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
+	Redirect.move(calPID(37000,fishy.get_position(),0,0));
+	if(abs(fishy.get_position()-37000)<200){
+		fishy_macro=false;
+	}
 }
 else {
+	// We aren't in macro mode, and no buttons are pressed
 	// setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
 	// Redirect.move(0);
 	//Redirect.move(calPID(liftAngle,fishy.get_position(),0,0));
-	if(fishy.get_angle() < 200){
-		Redirect.move(calPID(0, fishy.get_position(), 0, 0));
+	if (return_fishmech && is_above) {
+		// fish mech is above horizontal, automatically return to start
+	    Redirect.move(50);
 	} else {
+		// fish mech is below horizontal, let it just coast
+		return_fishmech = false;
 		Redirect.move(0);
 		Redirect.set_brake_mode(MOTOR_BRAKE_BRAKE);
 	}

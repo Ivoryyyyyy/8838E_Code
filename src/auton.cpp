@@ -116,14 +116,14 @@ Redirect.move(-127);//touches ladder
 void autons2() {
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(35);
-driveSlow(305, 15);
+driveSlow(300, 15);
 Redirect.move(-127);
 delay(450);
 Redirect.move(127);
 delay(350);
 Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-driveStraight2(-500);
+driveStraight2(-525);
 driveTurn(60);
 Redirect.move(127);
 delay(200);
@@ -144,13 +144,14 @@ driveTurn(-85);
 driveClampSlow(-1550, 20, 65);
 driveStraight2(100);
 driveTurn(-110);
-Intake.move(-100);
+Intake.move(-90);
 Intake_Layer1.move(-127);
-delay(250);
+delay(300);
 driveStraight2(775);
-Intake.move(-85);
+Intake.move(-100);
+delay(600);
 driveTurn(-160);
-driveSlow(950, 100);
+driveSlow(900, 100);
 Redirect.move(-127);
 }
 
@@ -280,7 +281,7 @@ driveTurn(-115);
 void autons5 () {
 //ring side auton blue
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-driveTurn(30);
+driveTurn(35);
 driveSlow(280, 15);
 Redirect.move(-127);
 delay(600);
@@ -288,29 +289,29 @@ Redirect.move(127);
 delay(350);
 Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-driveTurn(-12);
+driveTurn(-15);
 // driveTurn(-10);
 driveClampSlow(-1950, 60, 50);
-delay(500);
+delay(400);
 driveStraight2(250);
 Redirect.move(127);
 delay(200);
 Redirect.move(0);
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(-150);
-driveTurn(-10);
+driveTurn(-20);
 Intake.move(-90);
 Intake_Layer1.move(-127);
-driveStraight2(750); // first ring 
-driveTurn(30);
+driveStraight2(740); // first ring 
+driveTurn(37);
 driveSlow(300, 20);
 delay(50); //second ring
 driveTurn(110);
 driveSlow(600, 50);
-delay(90);
+delay(100);
 Intake.move(-95);
 Intake_Layer1.move(0); 
-driveTurn(115);
+driveTurn(110);
 Intake.move(0);
 driveStraight2(1000);
 Redirect.move(-127);//touches ladder
