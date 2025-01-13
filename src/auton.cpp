@@ -114,6 +114,60 @@ Redirect.move(-127);//touches ladder
 
 
 void autons2() {
+//red side ring side 
+Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+driveTurn(-35);
+driveSlow(300, 15);
+Redirect.move(-127);
+delay(450);
+Redirect.move(127);
+delay(350);
+Redirect.move(0);
+Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+driveStraight2(-525);
+driveTurn(-60);
+Redirect.move(127);
+delay(200);
+Redirect.move(0);
+    Intake.move(-80);
+    Intake_Layer1.move(-127);
+    driveSlow(700, 25);  
+    bool color = true;
+    while(color){
+if(eyes.get_hue()<25){
+    Intake.move(0);
+    Intake_Layer1.move(0);
+    break;
+}
+    }
+driveSlow(-600, 70);
+driveTurn(85);
+driveClampSlow(-1550, 20, 65);
+driveStraight2(100);
+driveTurn(110);
+Intake.move(-90);
+Intake_Layer1.move(-127);
+delay(300);
+driveStraight2(775);
+Intake.move(-100);
+delay(600);
+driveTurn(160);
+driveSlow(900, 100);
+Redirect.move(-127);
+}
+
+void autons3() {
+driveSlow(1875, 50); // speed up later 
+driveTurn(-45);
+// driveStraight2(150);
+StakeWing.set_value(true);
+delay(500);
+driveTurn(-80);
+StakeWing.set_value(false);
+Intake_Layer1.move(-127);
+driveStraight2(400);
+driveTurn(-120);
+//blue side ring side    
 Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 driveTurn(35);
 driveSlow(300, 15);
