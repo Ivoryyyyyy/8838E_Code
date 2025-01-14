@@ -7,7 +7,7 @@
 
 #define STRAIT_KP 5.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
 #define STRAIT_KI 1// 0.001(breaks out of the loop)
-#define STRAIT_KD 7// start at what kp is at then make it bigger
+#define STRAIT_KD 25// start at what kp is at then make it bigger
 
 #define STRAIT_INTEGRAL_KI 40//
 #define STRAIT_MAX_INTEGRAL 14.5//
@@ -43,9 +43,9 @@ extern int viewTime;
 
 
 
-#define TURN_KP 7.00//
-#define TURN_KI 0// 
-#define TURN_KD 75// 
+#define TURN_KP 8.35//
+#define TURN_KI 0.2// 
+#define TURN_KD 250// 
 
 #define TURN_INTRGRAL_KI 30
 #define TURN_MAX_INTEGRAL 25
