@@ -415,7 +415,7 @@ if (position > 180){
     position = ((350-position)*-1 );
 }
 
-if ((target < 0) && position >0) {
+if ((target < 0) && position > 0) {
     if((position - target) >= 180){
         target = target +360;
         position = imu.get_heading();
@@ -440,8 +440,8 @@ double variKP;
 double variKD;
 double x = 0;
 x = double(abs(turnv));
-variKP = (0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; 
-variKD = (0 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; 
+variKP = ( 0.00000000030297 * pow(x,5)) + ( -0.000000148739 * pow(x, 4)) + (0.0000271428* pow(x,3)) + (-0.00230735* pow(x,2)) + (0.0976933* x) + 6.25393; 
+variKD = (0.0000000102103 * pow(x,5)) + (-0.00000492871 * pow(x, 4)) + (00.000912518 * pow(x,3)) + (-0.0708873* pow(x,2)) + (2.28868 * x) + 57.12561; 
 //timeout = (30000 * pow(x,5)) + (0 * pow(x, 4)) + (0* pow(x,3)) + (0* pow(x,2)) + (0 * x) + 0; //Comment timeout our while tuning pid and while tuning timeout, Tune wit 
 
 
@@ -478,13 +478,13 @@ if ((target < 0) && position >0) {
     if (abs(target = position) <= 1) count ++;
     if (count >= 20 || time2 > timeout){
           tunetime2 = time2;
-    break;
+    // break;
     }
 
     if (time2 % 50 == 0 && time2 % 100 !=0 && time2 % 150 !=0){
     con.print(0,0,"ERROR:%f    ", float(error));
 } else if (time2% 100 == 0 && time2 % 150 !=0){
-    con.print(1,0,"EncoderAvg!%f        ", float(imu.get_heading()));
+    con.print(1,0,"Target!%f        ", float(target));
 } else if (time2 % 150 ==0){
     con.print(2,0,"Time:%f    ",float(time2));
 }

@@ -35,7 +35,7 @@ void disabled() {
 }
 
 void autonomous() {
-	autons5();
+	autons4();
 }
 void competition_initialize() {}
 
@@ -113,8 +113,7 @@ else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 		}
     	Redirect.move(speed);
 	} else {
-		// There isn't a BRAKE mode, so just move the other way to
-		// stay in place 
+		// There isn't a BRAKE mode, so just move the other way to stay in place 
 		Redirect.move(10);
 	}
 
@@ -150,25 +149,10 @@ else {
 	}
 }
 //pid tester m 
-// if(con.get_digital_new_press(E_CONTROLLER_DIGI TAL_A)){
-// 	StakeWingToggle = !StakeWingToggle;
-// 	Redirect.move(90);
-// 	StakeWingToggle = !StakeWingToggle;
-// 	// Intake.move(-117);
-// 	// StakeWing.set_value(true);
-// 	// delay(700);
-// 	// Intake.move(127);
-// 	// delay(450);
-// 	// Intake.move(0);
-// 	// Redirect.move(-100);
-// 	// delay(900);
-// 	// StakeWing.set_value(false);
-// 	// //driveArcL(90, 800, 1000);
-// 	//autonomous(); 
-// 	//driveSlow(1000,80);
-// 	//make sure that this works for small and big numbers 
-// 	//driveTurn(180);
-// }
+if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+driveTurn2(160);
+delay(3000);
+}
 
 
 
