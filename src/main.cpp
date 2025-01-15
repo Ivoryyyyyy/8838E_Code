@@ -35,7 +35,7 @@ void disabled() {
 }
 
 void autonomous() {
-	autons4();
+	autons1();
 }
 void competition_initialize() {}
 
@@ -47,7 +47,7 @@ bool arcToggle = true;
 bool tankToggle=false;
 bool StakeWingToggle=false;
 double liftAngle=true;
-int time=0;
+int time =0;
 bool hooks_Macro = false;
 bool  hooks_Macro_Rev = false;
 bool fishy_macro = false;
@@ -90,7 +90,7 @@ if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 			speed = 20;
 		}
     	Redirect.move(speed);
-	} else {
+	} else 
 		// There isn't a BRAKE mode, so just move the other way to
 		// stay in place
 		Redirect.move(0);
@@ -99,7 +99,7 @@ if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 	fishy_macro=false; 
 	liftAngle = fishy.get_position();
 	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
-}
+
 else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 	// Rotates fishmech to put the ring on the stake
 	bool forbidden = (is_above && (fishy.get_angle() >= 23000));
@@ -128,7 +128,7 @@ else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 } 
 else if (fishy_macro){
 	setConstants(LIFT_KP,LIFT_KI,LIFT_KD);
-	Redirect.move(calPID(37000,fishy.get_position(),0,0));
+	Redirect.move(calcPID(37000,fishy.get_position(),0,0));
 	if(abs(fishy.get_position()-37000)<200){
 		fishy_macro=false;
 	}
@@ -149,10 +149,10 @@ else {
 	}
 }
 //pid tester m 
-if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-driveTurn2(160);
-delay(3000);
-}
+// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+// driveTurn2(120);
+// delay(3000);
+// }
 
 
 
@@ -239,8 +239,6 @@ if (time % 50 == 0 && time % 100 !=0 && time % 150 !=0){
 
 delay(10);
 time += 10;
-
-}
 
 }
 

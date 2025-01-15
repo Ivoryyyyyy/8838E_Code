@@ -13,7 +13,10 @@
 // autons4= blue side elims goal side
 // autons5 = auto skills
 
- void autons1 (){}
+ void autons1(){
+    driveStraight2(200);
+    Redirect.move(-127);
+ }
  void autons2(){}
  void autons3(){}
  void autons4(){}

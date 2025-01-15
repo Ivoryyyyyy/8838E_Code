@@ -5,19 +5,19 @@
 #ifndef PIDH
 #define PIDH
 
-#define STRAIT_KP 5.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
-#define STRAIT_KI 1// 0.001(breaks out of the loop)
-#define STRAIT_KD 25// start at what kp is at then make it bigger
+#define STRAIGHT_KP 3.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
+#define STRAIGHT_KI 0.1// 0.001(breaks out of the loop)
+#define STRAIGHT_KD 70// start at what kp is at then make it bigger
 
-#define STRAIT_INTEGRAL_KI 40//
-#define STRAIT_MAX_INTEGRAL 14.5//
+#define STRAIGHT_INTEGRAL_KI 40//
+#define STRAIGHT_MAX_INTEGRAL 14.5//
 
 extern void driveStraight(int target);
 extern void driveStraight2(int target);
 extern void driveTurn(int target);
 extern void driveTurn2(int target);
 extern void driveSlow(int target, int speed);
-extern double calPID(double target, double input, int integralKi, int maxIntergral);
+extern double calcPID(double target, double input, int integralKi, int maxIntergral);
 extern void driveIntake(int target, int start, int stop);
 extern void driveClamp (int target, int clampDistance);
 extern void setConstants( double kp, double ki, double kd);
@@ -38,7 +38,7 @@ extern float error;
 extern int tunetime2;
 extern void justIntake (int time);
 extern void hooks(int speed);
-extern void stallProt();
+//extern void stallProt();
 extern int viewTime;
 
 
