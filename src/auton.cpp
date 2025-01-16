@@ -14,10 +14,23 @@
 // autons5 = auto skills
 
  void autons1(){
-    driveStraight2(200);
-    Redirect.move(-127);
+   driveTurn2(-45);
+   driveStraight2(275);
+   Redirect.move(-127);
  }
- void autons2(){}
+ void autons2(){
+   //skills
+   // Redirect.move(-127);
+   // delay(550);
+   // Redirect.move(127);
+   // delay(450);
+   // Redirect.move(0);
+   driveStraightC(-225);
+   //driveArcRF(-90, 250, 750);
+   driveTurn2(90);
+   driveStraightC(-500);
+   driveClamp(-100, 10);
+ }
  void autons3(){}
  void autons4(){}
  void autons5(){}

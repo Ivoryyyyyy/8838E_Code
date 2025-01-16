@@ -35,7 +35,7 @@ void disabled() {
 }
 
 void autonomous() {
-	autons1();
+	autons2();
 }
 void competition_initialize() {}
 
@@ -94,13 +94,7 @@ if (con.get_digital(E_CONTROLLER_DIGITAL_L1)){
 		// There isn't a BRAKE mode, so just move the other way to
 		// stay in place
 		Redirect.move(0);
-	}
-
-	fishy_macro=false; 
-	liftAngle = fishy.get_position();
-	Redirect.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
+	} else if (con.get_digital(E_CONTROLLER_DIGITAL_L2)){
 	// Rotates fishmech to put the ring on the stake
 	bool forbidden = (is_above && (fishy.get_angle() >= 23000));
 
@@ -227,7 +221,7 @@ RB.move(right);
 }
 
 if (time % 50 == 0 && time % 100 !=0 && time % 150 !=0){
-    con.print(0,0,"Time:%f       ", float(viewTime));
+    con.print(0,0,"Time:%f       ", float(time));//viewTime
 } else if (time% 100 == 0 && time % 150 !=0){
     con.print(1,0,"HeadingError!%f          ", float(imu.get_heading()));
 } else if (time % 150 == 0){
@@ -242,3 +236,4 @@ time += 10;
 
 }
 
+}

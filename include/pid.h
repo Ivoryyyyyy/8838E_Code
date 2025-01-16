@@ -5,15 +5,16 @@
 #ifndef PIDH
 #define PIDH
 
-#define STRAIGHT_KP 3.00// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 
-#define STRAIGHT_KI 0.1// 0.001(breaks out of the loop)
-#define STRAIGHT_KD 70// start at what kp is at then make it bigger
+#define STRAIGHT_KP 1.2// make it bigger untill it goes back and fourth and make sure that the error is less than 2-3 //8.05
+#define STRAIGHT_KI 0.5// 0.001(breaks out of the loop) //0.5
+#define STRAIGHT_KD 10// start at what kp is at then make it bigger //50
 
 #define STRAIGHT_INTEGRAL_KI 40//
 #define STRAIGHT_MAX_INTEGRAL 14.5//
 
 extern void driveStraight(int target);
 extern void driveStraight2(int target);
+extern void driveStraightC(int target);
 extern void driveTurn(int target);
 extern void driveTurn2(int target);
 extern void driveSlow(int target, int speed);
@@ -43,9 +44,9 @@ extern int viewTime;
 
 
 
-#define TURN_KP 8.35//
-#define TURN_KI 0.2// 
-#define TURN_KD 250// 
+#define TURN_KP 8//
+#define TURN_KI 0.5// 
+#define TURN_KD 85// 
 
 #define TURN_INTRGRAL_KI 30
 #define TURN_MAX_INTEGRAL 25
@@ -55,9 +56,9 @@ extern int viewTime;
 #define LIFT_KD 0// 
 
 //straight stuff
-#define HEADING_KP 150
-#define HEADING_KI 25
-#define HEADING_KD 250
+#define HEADING_KP 6
+#define HEADING_KI 0
+#define HEADING_KD 20
 #define HEADING_MAX_INTEGRAL 0
 #define HEADING_INTEGRAL_KI 0
 
