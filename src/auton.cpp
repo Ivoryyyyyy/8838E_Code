@@ -127,16 +127,19 @@
  }
  void autons5(){
  driveStraightC(100);
- driveTurn2(-12);
- driveStraightC(1500);
- driveTurn2(55);
-//  driveArcRF(45, 200, 750);
-//  driveStraight2(350);
-//  StakeWing.set_value(true);
-//  driveTurn2(-25);
-//  driveTurn2(-10);
-//  StakeWing.set_value(true);
-//  driveTurn2(120);
+ driveTurn2(-11);
+ driveStraightC(1400);
+ driveTurn2(40);
+ driveStraight2(450);
+ StakeWing.set_value(true);
+ driveTurn2(-50);
+StakeWing.set_value(false);
+delay(100);
+ driveTurn2(-90);
+ driveStraight2(-800);
+ driveTurn2(-45);
+ driveStraight2(-500);
+ driveClampS(-250, 50, 50);
  }
 
 // // driveStraight(1600);

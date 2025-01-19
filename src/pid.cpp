@@ -607,7 +607,7 @@ void driveStraightC(int target) {
         voltage = calcPID(target, encoderAVG, STRAIGHT_INTEGRAL_KI, STRAIGHT_MAX_INTEGRAL);
 
 if(init_heading > 180) {
-    init_heading = (360 - init_heading);
+    init_heading = (init_heading - 360);
 }
 
 
