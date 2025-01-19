@@ -35,7 +35,21 @@ void disabled() {
 }
 
 void autonomous() {
-	autons2();
+	autons5();
+	    delay(10);
+        // if(time2 % 50 == 0 && time2 % 100 != 0 && time2 % 150!= 0){
+        //     con.print(0,0, "ERROR: %f           ", float(error));
+        // }
+        //  if(time2 % 50 == 0 && time2 % 100 != 0){
+        //     con.print(2,0, "EncoderAVG: %f           ", float(imu.get_heading()));
+        // }
+        //  if(time2 % 50 == 0){
+        //     con.print(1,0, "Time2: %f           ", float(time2));
+        // }
+        
+        
+        // time2 += 10;
+
 }
 void competition_initialize() {}
 
@@ -143,10 +157,9 @@ else {
 	}
 }
 //pid tester m 
-// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
-// driveTurn2(120);
-// delay(3000);
-// }
+if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_A)){
+autons5();
+}
 
 
 

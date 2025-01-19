@@ -512,7 +512,7 @@ void driveStraight2(int target) {
         voltage = calcPID(target, encoderAVG, STRAIGHT_INTEGRAL_KI, STRAIGHT_MAX_INTEGRAL);
 
 if(init_heading > 180) {
-    init_heading = (360 - init_heading);
+    init_heading = (init_heading - 360);
 }
 
 
@@ -785,7 +785,8 @@ void driveClampS(int target, int clampDistanceFromTarget, int speed) {
     double encoderAVG;
     int count = 0;
     double init_heading = imu.get_heading();
-    double headingError = 0;
+    //double headingError = 0;
+    double headingError;
     int cycleTime = 0;
     time2 = 0;
 
@@ -842,10 +843,10 @@ if(init_heading > 180) {
 
         delay(10);
         if(time2 % 50 == 0 && time2 % 100 != 0 && time2 % 150!= 0){
-            con.print(0,0, "ERROR: %f           ", float(time2));
+            con.print(0,0, "ERROR: %f           ", float(error));
         }
          if(time2 % 50 == 0 && time2 % 100 != 0){
-            con.print(2,0, "EncoderAVG: %f           ", float(LF.get_encoder_units()));
+            con.print(2,0, "EncoderAVG: %f           ", float(imu.get_heading()));
         }
          if(time2 % 50 == 0){
             con.print(1,0, "Time2: %f           ", float(time2));

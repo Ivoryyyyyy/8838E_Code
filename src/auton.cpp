@@ -2,7 +2,7 @@
 #include "api.h"
 #include "pid.h"
 #include "robot.h"
- #include "auton.h"
+#include "auton.h"
  using namespace pros;
 
  bool MogoMechToggle = false;
@@ -14,10 +14,38 @@
 // autons5 = auto skills
 
  void autons1(){
-   driveTurn2(-45);
-   driveStraight2(275);
+   Redirect.move(-17);
+   delay(50);
+   driveTurn2(-40);
+   driveStraight2(350);
    Redirect.move(-127);
- }
+   delay(650);
+   Redirect.move(127);
+   delay(300);
+   Redirect.move(0);
+   driveStraight2(-1140);
+   driveTurn2(11);
+   driveClampS(-1200, 100, 60);
+   driveStraight2(450);
+   driveTurn2(90);
+   Intake.move(-90);
+   Intake_Layer1.move(-127);
+   driveStraight2(850);
+   driveTurn2(180);
+   driveStraight2(525);
+   driveTurn2(130);
+   driveStraight2(160);
+   driveTurn2(30);
+   StakeWing.set_value(true);
+   driveStraight2(2100);
+  //  driveStraight2(400);
+   delay(300);
+   driveTurn2(-60);
+   StakeWing.set_value(false);
+   driveTurn2(25);
+   driveStraight2(400);
+   //finsihed code!! Don't touch!!
+   }
  void autons2(){
    //skills
    // Redirect.move(-127);
@@ -25,15 +53,91 @@
    // Redirect.move(127);
    // delay(450);
    // Redirect.move(0);
-   driveStraightC(-225);
+   driveStraightC(-200);
    //driveArcRF(-90, 250, 750);
    driveTurn2(90);
-   driveStraightC(-500);
-   driveClamp(-100, 10);
+   driveStraightC(-650);
+   driveClampS(-200, 30, 50);
+
  }
- void autons3(){}
- void autons4(){}
- void autons5(){}
+ void autons3(){
+   Redirect.move(-17);
+   delay(50);
+   driveTurn2(-40);
+   driveStraight2(350);
+   Redirect.move(-127);
+   delay(650);
+   Redirect.move(127);
+   delay(300);
+   Redirect.move(0);
+   driveStraight2(-1150);
+   driveTurn2(11);
+   driveClampS(-1050, 40, 50);
+   driveStraight2(300);
+   driveTurn2(90);
+   Intake.move(-90);
+   Intake_Layer1.move(-127);
+   driveStraight2(850);
+   driveTurn2(180);
+   driveStraight2(525);
+   driveTurn2(130);
+   driveStraight2(180);
+   driveTurn2(-70);
+   driveStraight2(600);
+ }
+ void autons4(){
+   //goal rush/75% awp
+  driveStraightC(100);
+  driveTurn2(12);
+  driveStraightC(1500);
+  driveTurn2(-50);
+  driveStraight2(400);
+  StakeWing.set_value(true);
+  delay(150);
+  driveTurn2(-90);
+  driveTurn2(-75);
+  StakeWing.set_value(false);
+  delay(150);
+  driveTurn2(-150);
+  Intake_Layer1.move(-127);
+  driveStraight2(680);
+  driveTurn2(91);
+  driveStraight2(-737.5);
+  driveClampS(-580, 10, 20);
+  MogoMech.set_value(true);
+  delay(100);
+  Intake.move(-90);
+  Intake_Layer1.move(-127);
+  delay(500);
+  StakeWing.set_value(true);
+  driveTurn2(-180);
+  Intake_Layer1.move(127);
+  driveArcLF(90, 1200, 1500);
+  driveStraight2(10);
+  driveTurn2(10);
+  StakeWing.set_value(false);
+  driveTurn2(130);
+  driveStraight2(500);
+  // // driveStraight2(-250);
+  // driveTurn2(-45);
+  // MogoMech.set_value(false);
+  // driveStraight2(-500);
+
+
+ }
+ void autons5(){
+ driveStraightC(100);
+ driveTurn2(-12);
+ driveStraightC(1500);
+ driveTurn2(55);
+//  driveArcRF(45, 200, 750);
+//  driveStraight2(350);
+//  StakeWing.set_value(true);
+//  driveTurn2(-25);
+//  driveTurn2(-10);
+//  StakeWing.set_value(true);
+//  driveTurn2(120);
+ }
 
 // // driveStraight(1600);
 // // driveTurn(15);
