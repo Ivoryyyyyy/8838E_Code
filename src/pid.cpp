@@ -705,7 +705,7 @@ void driveClamp(int target, int clampDistance) {
         voltage = calcPID(target, encoderAVG, STRAIGHT_INTEGRAL_KI, STRAIGHT_MAX_INTEGRAL);
 
 if(init_heading > 180) {
-    init_heading = (360 - init_heading);
+    init_heading = (init_heading - 360);
 }
 
 
@@ -785,8 +785,7 @@ void driveClampS(int target, int clampDistanceFromTarget, int speed) {
     double encoderAVG;
     int count = 0;
     double init_heading = imu.get_heading();
-    //double headingError = 0;
-    double headingError;
+    double headingError = 0;
     int cycleTime = 0;
     time2 = 0;
 
@@ -800,7 +799,7 @@ void driveClampS(int target, int clampDistanceFromTarget, int speed) {
         voltage = calcPID(target, encoderAVG, STRAIGHT_INTEGRAL_KI, STRAIGHT_MAX_INTEGRAL);
 
 if(init_heading > 180) {
-    init_heading = (360 - init_heading);
+    init_heading = (init_heading - 360);
 }
 
 
@@ -895,7 +894,7 @@ void driveStraightSlow(int target, int speed) { // RETUNE TIMEOUT!! SLOW PID!
         voltage = calcPID(target, encoderAVG, STRAIGHT_INTEGRAL_KI, STRAIGHT_MAX_INTEGRAL);
 
 if(init_heading > 180) {
-    init_heading = (360 - init_heading);
+    init_heading = (init_heading - 360);
 }
 
 

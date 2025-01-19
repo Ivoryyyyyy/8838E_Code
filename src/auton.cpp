@@ -14,6 +14,7 @@
 // autons5 = auto skills
 
  void autons1(){
+  //red ring side
    Redirect.move(-17);
    delay(50);
    driveTurn2(-40);
@@ -61,32 +62,41 @@
 
  }
  void autons3(){
+  //blue ring side
    Redirect.move(-17);
    delay(50);
-   driveTurn2(-40);
+   driveTurn2(40);
    driveStraight2(350);
    Redirect.move(-127);
    delay(650);
    Redirect.move(127);
    delay(300);
    Redirect.move(0);
-   driveStraight2(-1150);
-   driveTurn2(11);
-   driveClampS(-1050, 40, 50);
-   driveStraight2(300);
-   driveTurn2(90);
+   driveStraight2(-1140);
+   driveTurn2(-11);
+   driveClampS(-1200, 100, 60);
+   driveStraight2(450);
+   driveTurn2(-90);
    Intake.move(-90);
    Intake_Layer1.move(-127);
-   driveStraight2(850);
-   driveTurn2(180);
-   driveStraight2(525);
-   driveTurn2(130);
-   driveStraight2(180);
-   driveTurn2(-70);
-   driveStraight2(600);
+   driveStraight2(900);
+   delay(300);
+   driveTurn2(-180);
+   driveStraight2(450);
+   driveTurn2(-120);
+   driveStraight2(100);
+   driveTurn2(-10);
+   StakeWing.set_value(true);
+   driveStraight2(2150);
+   delay(300);
+   driveTurn2(-120);
+  //  StakeWing.set_value(false);
+  //  driveTurn2(-25);
+  //  driveStraight2(400);
+   //finsihed code!! Don't touch!!
  }
  void autons4(){
-   //goal rush/75% awp
+   //red goal rush/45% awp
   driveStraightC(100);
   driveTurn2(12);
   driveStraightC(1500);
@@ -126,6 +136,7 @@
 
  }
  void autons5(){
+  //blue goal rush
  driveStraightC(100);
  driveTurn2(-11);
  driveStraightC(1400);
@@ -133,13 +144,24 @@
  driveStraight2(450);
  StakeWing.set_value(true);
  driveTurn2(-50);
-StakeWing.set_value(false);
-delay(100);
+ driveTurn2(-40);
+ StakeWing.set_value(false);
+ delay(100);
  driveTurn2(-90);
- driveStraight2(-800);
+ driveStraightSlow(-750, 50);
  driveTurn2(-45);
- driveStraight2(-500);
- driveClampS(-250, 50, 50);
+ driveClampS(-1100, 20, 40); 
+ delay(100);
+ driveStraight2(250);
+ MogoMech.set_value(true);
+ driveTurn2(-90);
+ Intake_Layer1.move(-127);
+ driveStraight2(750);
+ Intake.move(-90);
+ delay(500);
+ driveTurn2(45);
+ driveStraight2(750);
+ Redirect.move(-127);
  }
 
 // // driveStraight(1600);
