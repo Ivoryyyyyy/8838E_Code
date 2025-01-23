@@ -32,10 +32,11 @@
    Intake.move(-90);
    Intake_Layer1.move(-127);
    driveStraight2(850);
+   delay(250);
    driveTurn2(180);
    driveStraight2(525);
-   driveTurn2(130);
-   driveStraight2(160);
+   driveTurn2(135);
+   driveStraight2(130);
    driveTurn2(30);
    StakeWing.set_value(true);
    driveStraight2(2100);
@@ -49,23 +50,54 @@
    }
  void autons2(){
    //skills
-   // Redirect.move(-127);
-   // delay(550);
-   // Redirect.move(127);
-   // delay(450);
-   // Redirect.move(0);
-   driveStraightC(-200);
-   //driveArcRF(-90, 250, 750);
-   driveTurn2(90);
-   driveStraightC(-650);
-   driveClampS(-200, 30, 50);
+    Redirect.move(-127);
+    delay(550);
+    Redirect.move(127);
+    delay(450);
+    Redirect.move(0);
+    driveStraight2(-445);
+    driveTurn2(89);
+    driveStraight2(-660);
+    driveTurn2(88);
+    driveClampS(-330, 10, 20);
+    driveTurn2(-170);
+    Intake.move(-100);
+    Intake_Layer1.move(-127);
+    driveStraight2(950);
+    delay(500);
+    driveTurn2(-90);
+    driveStraight2(750);
+    delay(500);
+    driveTurn2(-135);
+    driveStraight2(1000);
+    driveStraight2(-600);
+    driveTurn2(5);
+    driveStraightSlow(1650,50);
+    driveTurn2(135);
+    MogoMech.set_value(false);
+    driveStraight2(-1000);
+    delay(1000);
+    driveStraight2(500);
+  // //  driveAr m n=cRF(90, 750, 1500);
+  //  driveStraight2(50);
+  //  delay(100);
+  //  driveTurn2(-155);
+  //  Intake.move(-90);
+  //  driveStraight2(700);
+  //  delay(500);
+  //  driveStraight2(-600);
+  //  driveTurn2(0);
+
+  
+
+
 
  }
  void autons3(){
   //blue ring side
    Redirect.move(-17);
    delay(50);
-   driveTurn2(40);
+   driveTurn2(39);
    driveStraight2(350);
    Redirect.move(-127);
    delay(650);
@@ -74,22 +106,23 @@
    Redirect.move(0);
    driveStraight2(-1140);
    driveTurn2(-11);
-   driveClampS(-1200, 100, 60);
-   driveStraight2(450);
+   driveClampS(-1250, 100, 50);
+   driveStraight2(500);
    driveTurn2(-90);
    Intake.move(-90);
    Intake_Layer1.move(-127);
    driveStraight2(900);
-   delay(300);
+   delay(400);
    driveTurn2(-180);
-   driveStraight2(450);
-   driveTurn2(-120);
+   driveStraight2(470);
+   driveTurn2(-115);
    driveStraight2(100);
-   driveTurn2(-10);
+   driveTurn2(-15);
+   Intake_Layer1.move(0);
    StakeWing.set_value(true);
    driveStraight2(2150);
    delay(300);
-   driveTurn2(-120);
+  //  driveTurn2(-60);
   //  StakeWing.set_value(false);
   //  driveTurn2(-25);
   //  driveStraight2(400);
@@ -100,18 +133,18 @@
   driveStraightC(100);
   driveTurn2(12);
   driveStraightC(1500);
-  driveTurn2(-50);
-  driveStraight2(400);
+  driveTurn2(-55);
+  driveStraight2(200);
   StakeWing.set_value(true);
   delay(150);
   driveTurn2(-90);
-  driveTurn2(-75);
+  driveTurn2(-70.5);
   StakeWing.set_value(false);
   delay(150);
   driveTurn2(-150);
   Intake_Layer1.move(-127);
-  driveStraight2(680);
-  driveTurn2(91);
+  driveStraight2(730);
+  driveTurn2(90);
   driveStraight2(-737.5);
   driveClampS(-580, 10, 20);
   MogoMech.set_value(true);
@@ -123,11 +156,12 @@
   driveTurn2(-180);
   Intake_Layer1.move(127);
   driveArcLF(90, 1200, 1500);
-  driveStraight2(10);
+  driveStraight2(10); 
   driveTurn2(10);
   StakeWing.set_value(false);
-  driveTurn2(130);
-  driveStraight2(500);
+  driveTurn2(-45);
+  MogoMech.set_value(false);
+  driveStraight2(-500);
   // // driveStraight2(-250);
   // driveTurn2(-45);
   // MogoMech.set_value(false);
@@ -147,22 +181,53 @@
  driveTurn2(-40);
  StakeWing.set_value(false);
  delay(100);
- driveTurn2(-90);
+ driveTurn2(-91);
  driveStraightSlow(-750, 50);
  driveTurn2(-45);
  driveClampS(-1100, 20, 40); 
  delay(100);
  driveStraight2(250);
  MogoMech.set_value(true);
- driveTurn2(-90);
+ driveTurn2(-85);
  Intake_Layer1.move(-127);
- driveStraight2(750);
  Intake.move(-90);
- delay(500);
- driveTurn2(45);
  driveStraight2(750);
- Redirect.move(-127);
+ delay(500);
+ driveTurn2(30);
+ MogoMech.set_value(false);
+ driveStraight2(-3000);
  }
+
+//blue ring side touch bar bc not doing corner stack
+ void autons6(){
+ //blue ring side
+   Redirect.move(-17);
+   delay(50);
+   driveTurn2(39);
+   driveStraight2(360);
+   Redirect.move(-127);
+   delay(650);
+   Redirect.move(127);
+   delay(300);
+   Redirect.move(0);
+   driveStraight2(-1150);
+   driveTurn2(-11);
+   driveClampS(-1250, 100, 50);
+   driveStraight2(500);
+   driveTurn2(-90);
+   Intake.move(-90);
+   Intake_Layer1.move(-127);
+   driveStraight2(900);
+   delay(400);
+   driveTurn2(-180);
+   driveStraight2(470);
+   driveTurn2(-115);
+   driveStraight2(100);
+   delay(150);
+   driveTurn2(80);
+   driveStraight2(1111);
+  }
+ 
 
 // // driveStraight(1600);
 // // driveTurn(15);

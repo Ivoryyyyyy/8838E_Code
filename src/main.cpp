@@ -35,7 +35,7 @@ void disabled() {
 }
 
 void autonomous() {
-	autons1();
+	autons2();
 	    // delay(10);
         // if(time2 % 50 == 0 && time2 % 100 != 0 && time2 % 150!= 0){
         //     con.print(0,0, "ERROR: %f           ", float(error));
