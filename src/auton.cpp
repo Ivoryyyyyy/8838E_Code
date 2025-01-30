@@ -12,40 +12,48 @@
 // auton3= red side elims goal side
 // autons4= blue side elims goal side
 // autons5 = auto skills
-
+void auton(){
+  driveStraight2(1000);
+  driveTurn2(90);
+}
  void autons1(){
   //red ring side
-   Redirect.move(-17);
-   delay(50);
-   driveTurn2(-40);
-   driveStraight2(350);
-   Redirect.move(-127);
-   delay(650);
-   Redirect.move(127);
-   delay(300);
-   Redirect.move(0);
-   driveStraight2(-1140);
-   driveTurn2(11);
-   driveClampS(-1200, 100, 60);
-   driveStraight2(450);
-   driveTurn2(90);
-   Intake.move(-90);
-   Intake_Layer1.move(-127);
-   driveStraight2(850);
-   delay(250);
-   driveTurn2(180);
-   driveStraight2(525);
-   driveTurn2(135);
-   driveStraight2(130);
-   driveTurn2(30);
-   StakeWing.set_value(true);
-   driveStraight2(2100);
+  Redirect.move(-17);
+  delay(50);
+  driveTurn2(-40);
+  driveStraight2(350);
+  //  Redirect.move(-127);
+  //  delay(650);
+  //  Redirect.move(127);
+  //  delay(500);
+  //  Redirect.move(0);
+  //  Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+  //  driveStraight2(-1140);
+  //  driveTurn2(11);
+  //  driveStraightSlow(-800, 30);
+  //  driveTurn2(5);
+  //  driveClampS(-200, 10, 30);
+  //  driveStraight2(250);
+  //  driveTurn2(90);
+  //  Intake.move(-100);
+  //  Intake_Layer1.move(-127);
+  //  driveStraight2(800);
+  //  delay(500);
+  //  driveTurn2(180);
+  //  driveStraight2(525);
+  //  driveTurn2(130);
+  //  driveStraight2(130);
+  //  driveTurn2(-80);
+  //  driveStraight2(900);
+  //  driveTurn2(30);
+  //  StakeWing.set_value(true);
+  //  driveStraight2(2100);
+  // //  driveStraight2(400);
+  //  delay(300);
+  //  driveTurn2(-60);
+  //  StakeWing.set_value(false);
+  //  driveTurn2(25);
   //  driveStraight2(400);
-   delay(300);
-   driveTurn2(-60);
-   StakeWing.set_value(false);
-   driveTurn2(25);
-   driveStraight2(400);
    //finsihed code!! Don't touch!!
    }
  void autons2(){
@@ -111,10 +119,10 @@
    driveTurn2(-90);
    Intake.move(-90);
    Intake_Layer1.move(-127);
-   driveStraight2(900);
+   driveStraight2(950);
    delay(400);
    driveTurn2(-180);
-   driveStraight2(470);
+   driveStraight2(450);
    driveTurn2(-115);
    driveStraight2(100);
    driveTurn2(-15);
@@ -195,7 +203,9 @@
  delay(500);
  driveTurn2(30);
  MogoMech.set_value(false);
- driveStraight2(-3000);
+ driveStraight2(-2000);
+ driveTurn2(0);
+ driveStraight2(1500);
  }
 
 //blue ring side touch bar bc not doing corner stack
@@ -228,7 +238,12 @@
    driveStraight2(1111);
   }
  
-
+ void autons7(){
+  StakeWing.set_value(true);
+  driveStraightSlow(500, 50);
+  driveTurn2(-60);
+  StakeWing.set_value(false);
+ }
 // // driveStraight(1600);
 // // driveTurn(15);
 // // delay(50);

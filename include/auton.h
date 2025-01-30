@@ -10,4 +10,6 @@ extern void autons4();
 extern void autons5();
 extern void autons6();
 extern void fiveRing();
+extern void autons7();
+extern void auton();
 extern bool MogoMechToggle;
