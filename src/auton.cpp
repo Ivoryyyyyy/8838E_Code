@@ -111,10 +111,10 @@
    driveTurn2(-90);
    Intake.move(-90);
    Intake_Layer1.move(-127);
-   driveStraight2(900);
+   driveStraight2(950);
    delay(400);
    driveTurn2(-180);
-   driveStraight2(470);
+   driveStraight2(450);
    driveTurn2(-115);
    driveStraight2(100);
    driveTurn2(-15);
@@ -155,13 +155,13 @@
   StakeWing.set_value(true);
   driveTurn2(-180);
   Intake_Layer1.move(127);
-  driveArcLF(90, 1200, 1500);
-  driveStraight2(10); 
-  driveTurn2(10);
-  StakeWing.set_value(false);
-  driveTurn2(-45);
-  MogoMech.set_value(false);
-  driveStraight2(-500);
+  // driveArcLF(90, 1200, 1500);
+  // driveStraight2(10); 
+  // driveTurn2(10);
+  // StakeWing.set_value(false);
+  // driveTurn2(-45);
+  // MogoMech.set_value(false);
+  // driveStraight2(-500);
   // // driveStraight2(-250);
   // driveTurn2(-45);
   // MogoMech.set_value(false);
@@ -195,7 +195,8 @@
  delay(500);
  driveTurn2(30);
  MogoMech.set_value(false);
- driveStraight2(-3000);
+ driveStraight2(-500);
+ driveTurn2(0);
  }
 
 //blue ring side touch bar bc not doing corner stack
@@ -228,7 +229,12 @@
    driveStraight2(1111);
   }
  
-
+ void autons7(){
+  StakeWing.set_value(true);
+  driveStraightSlow(500, 50);
+  driveTurn2(-60);
+  StakeWing.set_value(false);
+ }
 // // driveStraight(1600);
 // // driveTurn(15);
 // // delay(50);
