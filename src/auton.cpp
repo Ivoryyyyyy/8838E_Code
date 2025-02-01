@@ -213,14 +213,8 @@ void auton(){
  delay(500);
  driveTurn2(30);
  MogoMech.set_value(false);
-<<<<<<< HEAD
  driveStraight2(-500);
  driveTurn2(0);
-=======
- driveStraight2(-2000);
- driveTurn2(0);
- driveStraight2(1500);
->>>>>>> eaf5082bed4757cd120b6ec10f8d4a5cecc53407
  }
 
 //blue ring side touch bar bc not doing corner stack
@@ -254,13 +248,10 @@ void auton(){
   }
  
  void autons7(){
-<<<<<<< HEAD
   StakeWing.set_value(true);
   driveStraightSlow(500, 50);
   driveTurn2(-60);
   StakeWing.set_value(false);
-=======
->>>>>>> eaf5082bed4757cd120b6ec10f8d4a5cecc53407
  }
 // // driveStraight(1600);
 // // driveTurn(15);
