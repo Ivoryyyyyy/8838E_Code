@@ -5,7 +5,7 @@
 #include "auton.h"
  using namespace pros;
 
- bool MogoMechToggle = false;
+
 
 // auton1=red side ring side
 // auton2=blue side ring side
@@ -21,37 +21,27 @@ void auton(){
   Redirect.move(-17);
   delay(50);
   driveTurn2(-40);
-  driveStraightSlow(350, 100);
-   Redirect.move(-127);
-   delay(650);
-   Redirect.move(127);
-   delay(500);
-   Redirect.move(0);
-   Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-   driveStraight2(-1140);
-   driveTurn2(11);
-   driveStraightSlow(-800, 60);
-   driveTurn2(5);
-   driveClampS(-250, 10, 30);
-   //driveStraight2(300);
-   driveTurn2(120);
-   Intake.move(-95);
-   Intake_Layer1.move(-127);
-   driveStraight2(720);
-   driveTurn2(105);
-   driveStraight2(100);
-   StakeWing.set_value(true);
-   delay(400);
-   driveTurn2(50);
-   driveArcLF(100, 400, 1000);
-   driveStraight2(10);
-   driveTurn2(-120);
-   StakeWing.set_value(false);
-   delay(50);
-   driveTurn2(-100);
-   delay(50);
-  //  Intake.move(-105);
-   driveStraightSlow(1500, 70);
+  driveStraight2(350);
+  //  Redirect.move(-127);
+  //  delay(650);
+  //  Redirect.move(127);
+  //  delay(500);
+  //  Redirect.move(0);
+  //  Redirect.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+  //  driveStraight2(-1140);
+  //  driveTurn2(11);
+  //  driveStraightSlow(-800, 30);
+  //  driveTurn2(5);
+  //  driveClampS(-200, 10, 30);
+  //  driveStraight2(250);
+  //  driveTurn2(90);
+  //  Intake.move(-100);
+  //  Intake_Layer1.move(-127);
+  //  driveStraight2(800);
+  //  delay(500);
+  //  driveTurn2(180);
+  //  driveStraight2(525);
+  //  driveTurn2(130);
   //  driveStraight2(130);
   //  driveTurn2(-80);
   //  driveStraight2(900);
