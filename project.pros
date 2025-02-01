@@ -1,7 +1,11 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
+<<<<<<< HEAD
     "project_name": "redg",
+=======
+    "project_name": "TEST",
+>>>>>>> eaf5082bed4757cd120b6ec10f8d4a5cecc53407
     "target": "v5",
     "templates": {
       "kernel": {

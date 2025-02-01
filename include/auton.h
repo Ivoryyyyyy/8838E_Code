@@ -11,4 +11,8 @@ extern void autons5();
 extern void autons6();
 extern void fiveRing();
 extern void autons7();
+<<<<<<< HEAD
+=======
+extern void auton();
+>>>>>>> eaf5082bed4757cd120b6ec10f8d4a5cecc53407
 extern bool MogoMechToggle;

@@ -35,7 +35,11 @@ void disabled() {
 }
 
 void autonomous() {
+<<<<<<< HEAD
 	autons4();
+=======
+	autons7();
+>>>>>>> eaf5082bed4757cd120b6ec10f8d4a5cecc53407
 	    // delay(10);
         // if(time2 % 50 == 0 && time2 % 100 != 0 && time2 % 150!= 0){
         //     con.print(0,0, "ERROR: %f           ", float(error));
@@ -74,9 +78,9 @@ while (true) {
 // }
 
 //macro fishy
-if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_UP)){
-	fishy_macro=!fishy_macro;
-}
+// if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_UP)){
+// 	fishy_macro=!fishy_macro;
+// }
 
 //Mogo Mech
 if(con.get_digital_new_press(E_CONTROLLER_DIGITAL_X)){
