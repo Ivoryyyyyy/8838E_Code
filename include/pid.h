@@ -32,6 +32,8 @@ extern void ColorSenseIntakeRed(int speed);
 extern void ColorSenseIntakeBlue(int speed);
 extern void WallStakePos(int speed, int SlowSense);
 extern void RingHold(int speed);
+extern void driveColorSort(int target, int speed);
+
 
 
 extern int time2;
